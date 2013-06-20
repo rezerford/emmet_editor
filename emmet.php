@@ -152,7 +152,10 @@ class plgEditorEmmet extends JPlugin
 		$options->profile 		= "html";
 
 		$html = array();
-		$html[]	= "<div style='position:relative;width:".$width.";height:".$height."; font-size:12px;line-height:1.4;'><textarea name=\"$name\" id=\"$id\" cols=\"$col\" rows=\"$row\">$content</textarea></div>";
+		$html[]	= "<div class='cm-wrapper' style='width:".$width.";height:".$height.";'>";
+        $html[] = '<div class="cm-panel"><a class="cm-button hint-button modal_jform_created_by" title="Show Help" href="../'. $this->_basePath .'help.html" rel="{handler: \'iframe\', size: {x: 800, y: 500}}">Help</a></div>';
+        $html[] = "<textarea name=\"$name\" id=\"$id\" cols=\"$col\" rows=\"$row\">$content</textarea>";
+        $html[] = '</div>';
 		$html[] = '<script type="text/javascript">';
 		$html[] = '(function() {';
 		$html[] = 'var editor = CodeMirror.fromTextArea(document.getElementById("'.$id.'"), '.json_encode($options).');';
