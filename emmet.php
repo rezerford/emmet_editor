@@ -150,7 +150,17 @@ class plgEditorEmmet extends JPlugin
 		$options->tabMode 		= 'shift';
 		$options->mode 			= "text/html";
 		$options->profile 		= "html";
-
+		
+		$keys = new stdClass;
+		$keys->F11	= "function(cm) { setFullScreen(cm, !isFullScreen(cm));}";
+		$keys->Esc	= "function(cm) { if (isFullScreen(cm)) setFullScreen(cm, false);}";
+		
+		$options->extraKeys		= $keys;
+		
+		$str_options = json_encode($options);
+		$str_options = preg_replace('/\"(function)/', "$1", $str_options);
+		$str_options = preg_replace('/(\})\"/', "$1", $str_options);
+		
 		$html = array();
 		$html[]	= "<div class='cm-wrapper' style='width:".$width.";height:".$height.";'>";
         $html[] = '<div class="cm-panel"><a class="cm-button hint-button modal_jform_created_by" title="Show Help" href="../'. $this->_basePath .'help.html" rel="{handler: \'iframe\', size: {x: 800, y: 500}}">Help</a></div>';
@@ -158,7 +168,7 @@ class plgEditorEmmet extends JPlugin
         $html[] = '</div>';
 		$html[] = '<script type="text/javascript">';
 		$html[] = '(function() {';
-		$html[] = 'var editor = CodeMirror.fromTextArea(document.getElementById("'.$id.'"), '.json_encode($options).');';
+		$html[] = 'var editor = CodeMirror.fromTextArea(document.getElementById("'.$id.'"), '.$str_options.');';
 		$html[] = 'Joomla.editors.instances[\''.$id.'\'] = editor;';
 		
 		//Override Joomla.submitbutton
