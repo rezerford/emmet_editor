@@ -1,10 +1,26 @@
-/* BASICS */
+.cm-wrapper {
+    position: relative;
+}
+.cm-panel {
+    border: 1px solid #CCC;
+    border-bottom: none;
+    padding: 5px 15px;
+    text-align: right;
+    background: #EEE;
+}
+.cm-popup {
+    position: absolute;
+    left: 100%;
+    top: 0;
+    width: 200px;
+}
 
+/* BASICS */
 .CodeMirror {
   /* Set height, width, borders, and global font properties here */
   font-family: monospace;
   font-size: 13px;
-  height: 250px;
+  height: 225px;
   border: 1px solid #CCC;
 }
 .CodeMirror-scroll {
