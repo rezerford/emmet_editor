@@ -30,3 +30,5 @@ CodeMirror editor with Emmet integrated.
 * `Ctrl-.`: Select Next Item
 * `Ctrl-,`: Select Previous Item
 * `Ctrl-B`: Reflect CSS Value
+
+Press `F11` when cursor is in the editor to toggle full screen editing. `Esc` can also be used to exit full screen editing.
